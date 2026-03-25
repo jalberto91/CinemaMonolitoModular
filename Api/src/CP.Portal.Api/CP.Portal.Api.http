@@ -1,6 +1,6 @@
 @CP.Portal.Api_HostAddress = http://localhost:5256
 
-GET {{CP.Portal.Api_HostAddress}}/weatherforecast/
+GET {{CP.Portal.Api_HostAddress}}/test
 Accept: application/json
 
 ###
