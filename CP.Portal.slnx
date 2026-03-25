@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Api/" />
+  <Folder Name="/Api/src/">
+    <Project Path="Api/src/CP.Portal.Api/CP.Portal.Api.csproj" />
+  </Folder>
+  <Folder Name="/Movies.Module/" />
+  <Folder Name="/Movies.Module/src/">
+    <Project Path="Movies.Module/src/CP.Portal.Movies.Module/CP.Portal.Movies.Module.csproj" />
+  </Folder>
+</Solution>
