@@ -7,4 +7,8 @@
   <Folder Name="/Movies.Module/src/">
     <Project Path="Movies.Module/src/CP.Portal.Movies.Module/CP.Portal.Movies.Module.csproj" />
   </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+  </Folder>
 </Solution>
