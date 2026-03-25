@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using CP.Portal.Movies.Module.Services;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CP.Portal.Movies.Module;
 

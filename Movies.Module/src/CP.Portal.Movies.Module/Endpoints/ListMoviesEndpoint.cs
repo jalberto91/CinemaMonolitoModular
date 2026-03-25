@@ -1,8 +1,10 @@
-﻿using FastEndpoints;
+using CP.Portal.Movies.Module.Services;
 
-namespace CP.Portal.Movies.Module;
+using FastEndpoints;
 
-public class ListMoviesEndpoint(IMovieService movieService)
+namespace CP.Portal.Movies.Module.Endpoints;
+
+internal class ListMoviesEndpoint(IMovieService movieService)
     : EndpointWithoutRequest<ListMoviesResponse>
 {
     private readonly IMovieService _movieService =  movieService;

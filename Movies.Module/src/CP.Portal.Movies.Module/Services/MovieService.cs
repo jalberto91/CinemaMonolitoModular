@@ -1,6 +1,8 @@
-﻿namespace CP.Portal.Movies.Module;
+using CP.Portal.Movies.Module.Endpoints;
 
-public class MovieService : IMovieService
+namespace CP.Portal.Movies.Module.Services;
+
+internal class MovieService : IMovieService
 {
     public List<MovieResponse> GetMovies() =>
         [
