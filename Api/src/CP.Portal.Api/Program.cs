@@ -1,8 +1,10 @@
 using CP.Portal.Movies.Module;
+using FastEndpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMovieServices();
+builder.Services.AddFastEndpoints();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
@@ -15,6 +17,7 @@ if (app.Environment.IsDevelopment())
 
 //app.UseHttpsRedirection();
 
+app.UseFastEndpoints();
 app.MapMoviesEndpoints();
 
 app.Run();

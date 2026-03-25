@@ -4,3 +4,8 @@ GET {{CP.Portal.Api_HostAddress}}/movies
 Accept: application/json
 
 ###
+
+GET {{CP.Portal.Api_HostAddress}}/api/movies
+Accept: application/json
+
+###
