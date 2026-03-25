@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CP.Portal.Movies.Module.Data;
 
 internal class Movie
@@ -14,5 +16,59 @@ internal class Movie
 
     public ICollection<MovieCast> Casts { get; } = [];
     public ICollection<MovieCrew> Crewers { get; } = [];
-    public ICollection<MovieGenre> GetMovieGenres { get; } = [];
+    public ICollection<MovieGenre> MovieGenres { get; } = [];
+
+    //projections
+    [NotMapped]
+    public IEnumerable<Genre> Genres => MovieGenres
+                                        .Select(g => g.Genre!)
+                                        .Where(g => g != null);
+
+    [NotMapped]
+    public IEnumerable<Person> CastPeple => Casts
+                                            .Select(c => c.Person!)
+                                            .Where(c=> c != null);
+
+
+    [NotMapped]
+    public IEnumerable<Person> CrewPeople => Crewers
+                                            .Select(c => c.Person!)
+                                            .Where(c => c != null);
+
+
+
+
+    internal Movie(
+        string title,
+        DateOnly releaseYears,
+        int durationMinutes,
+        string language,
+        decimal rentalPrice,
+        string? originalTitle = null,
+        string? synopsis = null
+        )
+    {
+        if(string.IsNullOrWhiteSpace(title))
+        {
+            throw new ArgumentException("Title cannot be null or empty.", nameof(title));
+        }
+
+        if (synopsis is not null && synopsis.Length > 4000)
+        {
+            throw new ArgumentException("Synopsis cannot exceed 4000 characters.", nameof(synopsis));
+        }
+
+        if (rentalPrice < 0m)
+        { 
+            throw new ArgumentOutOfRangeException(nameof(rentalPrice), "Rental price cannot be negative.");
+        }
+
+        Title = title;
+        OriginalTitle = originalTitle?.Trim();
+        Synopsis = synopsis?.Trim();
+        ReleaseYear = releaseYears;
+        DurationMinutes = durationMinutes;
+        Language = language.Trim();
+        RentalPrice = rentalPrice;
+    }
 }
