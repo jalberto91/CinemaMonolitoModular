@@ -2,6 +2,7 @@ using CP.Portal.Movies.Module;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMovieServices();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
