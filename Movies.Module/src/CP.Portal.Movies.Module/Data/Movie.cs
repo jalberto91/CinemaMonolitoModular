@@ -11,4 +11,8 @@ internal class Movie
     public string? Language { get; private set; }
     public decimal RentalPrice { get; private set; }
     public DateTime CreateAt { get; private set; } = DateTime.UtcNow;
+
+    public ICollection<MovieCast> Casts { get; } = [];
+    public ICollection<MovieCrew> Crewers { get; } = [];
+    public ICollection<MovieGenre> GetMovieGenres { get; } = [];
 }

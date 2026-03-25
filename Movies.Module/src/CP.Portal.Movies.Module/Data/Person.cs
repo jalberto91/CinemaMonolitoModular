@@ -6,4 +6,7 @@ internal class Person
     public string? Name{ get; private set; }
     public DateTime BirthDate { get; private set; }
     public string? Bio { get; private set; }
+
+    public ICollection<MovieCast> Casts { get; } = [];
+    public ICollection<MovieCrew> Crewers { get; } = [];
 }
