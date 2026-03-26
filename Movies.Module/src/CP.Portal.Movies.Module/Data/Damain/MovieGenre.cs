@@ -1,4 +1,4 @@
-namespace CP.Portal.Movies.Module.Data;
+namespace CP.Portal.Movies.Module.Data.Damain;
 
 internal class MovieGenre
 {

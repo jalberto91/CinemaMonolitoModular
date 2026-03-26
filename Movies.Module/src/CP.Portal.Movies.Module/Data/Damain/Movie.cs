@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CP.Portal.Movies.Module.Data;
+namespace CP.Portal.Movies.Module.Data.Damain;
 
 internal class Movie
 {
