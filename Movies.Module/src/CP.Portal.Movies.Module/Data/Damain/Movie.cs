@@ -40,7 +40,7 @@ internal class Movie
 
     internal Movie(
         string title,
-        DateOnly releaseYears,
+        DateOnly releaseYear,
         int durationMinutes,
         string language,
         decimal rentalPrice,
@@ -63,10 +63,10 @@ internal class Movie
             throw new ArgumentOutOfRangeException(nameof(rentalPrice), "Rental price cannot be negative.");
         }
 
-        Title = title;
+        Title = title.Trim();
         OriginalTitle = originalTitle?.Trim();
         Synopsis = synopsis?.Trim();
-        ReleaseYear = releaseYears;
+        ReleaseYear = releaseYear;
         DurationMinutes = durationMinutes;
         Language = language.Trim();
         RentalPrice = rentalPrice;
