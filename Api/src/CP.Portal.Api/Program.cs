@@ -4,7 +4,7 @@ using FastEndpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMovieServices();
+builder.Services.AddMovieServices(builder.Configuration);
 builder.Services.AddFastEndpoints();
 builder.Services.AddOpenApi();
 
