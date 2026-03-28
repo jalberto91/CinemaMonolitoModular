@@ -44,8 +44,8 @@ internal class Movie
         int durationMinutes,
         string language,
         decimal rentalPrice,
-        string? originalTitle = null,
-        string? synopsis = null
+        string? synopsis = null,
+        string? originalTitle = null
         )
     {
         if(string.IsNullOrWhiteSpace(title))

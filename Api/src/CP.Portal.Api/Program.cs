@@ -1,6 +1,9 @@
 using CP.Portal.Movies.Module;
+using CP.Portal.Movies.Module.Data;
 
 using FastEndpoints;
+
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +20,12 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UseHttpsRedirection();
+
+await using ( var scope = app.Services.CreateAsyncScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<MovieDbContext>();
+    await dbContext.Database.MigrateAsync();
+}
 
 app.UseFastEndpoints();
 

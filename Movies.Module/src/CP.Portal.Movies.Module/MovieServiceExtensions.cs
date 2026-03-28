@@ -1,4 +1,5 @@
 using CP.Portal.Movies.Module.Data;
+using CP.Portal.Movies.Module.Data.Seedings;
 using CP.Portal.Movies.Module.Services;
 
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,14 @@ public static class MovieServiceExtensions
         string? connectionString = config.GetConnectionString("MoviesConnectionStrings");
         services.AddDbContext<MovieDbContext>(options =>
         {
-            options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
+            options.UseNpgsql(connectionString)
+            .UseSnakeCaseNamingConvention()
+            .UseAsyncSeeding( async (db, isFirst, ct) =>
+            {
+                var dbContext = (MovieDbContext)db;
+
+                await MoviesAsyncSeeder.SeedAsync(dbContext, ct);
+            });
         });
 
         return services;
