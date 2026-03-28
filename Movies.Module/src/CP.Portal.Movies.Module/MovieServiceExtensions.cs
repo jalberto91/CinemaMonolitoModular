@@ -29,6 +29,8 @@ public static class MovieServiceExtensions
                 var movies = await MoviesAsyncSeeder.SeedAsync(dbContext, ct);
 
                 await MovieGenresAsyncSeeder.SeedAsync(dbContext, movies, ct);
+                await MovieCastsAsyncSeeder.SeedAsync(dbContext, movies, ct);
+                await MoviesCrewsAsyncSeeder.SeedAsync(dbContext, movies, ct);   
 
             });
         });

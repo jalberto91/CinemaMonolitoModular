@@ -8,4 +8,11 @@ internal class MovieCrew
 
     public Movie? Movie { get; private set; }
     public Person? Person { get; private set; }
+
+    internal MovieCrew( Guid movieId, Guid personId, string role)
+    {
+        MovieId = movieId;
+        PersonId = personId;
+        Role = role;
+    }
 }

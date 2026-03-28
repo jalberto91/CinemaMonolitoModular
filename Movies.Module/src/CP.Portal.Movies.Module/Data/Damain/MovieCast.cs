@@ -9,4 +9,12 @@ internal class MovieCast
 
     public Movie? Movie { get; private set; }
     public Person? Person { get; private set; }
+
+    internal MovieCast(Guid movieId, Guid personId, string? characterName = null, int castOrder = 0)
+    {
+        MovieId = movieId;
+        PersonId = personId;
+        CharacterName = characterName;
+        CastOrder = castOrder;
+    }
 }

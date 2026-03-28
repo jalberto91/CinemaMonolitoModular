@@ -17,7 +17,7 @@ public class MovieDbContext: DbContext
     internal DbSet<Person> Peoples { get; set; }
     internal DbSet<MovieGenre> MovieGenres { get; set; }
     internal DbSet<MovieCast> MovieCasts { get; set; }
-    internal DbSet<MovieCrew> GetMovieCrews { get; set; }
+    internal DbSet<MovieCrew> MovieCrews { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
