@@ -9,4 +9,12 @@ internal class Person
 
     public ICollection<MovieCast> Casts { get; } = [];
     public ICollection<MovieCrew> Crewers { get; } = [];
+
+    internal Person(Guid personId, string name, DateTime birthDate, string? bio)
+    {
+        PersonId = personId;
+        Name = name;
+        BirthDate = birthDate;
+        Bio = bio;
+    }
 }

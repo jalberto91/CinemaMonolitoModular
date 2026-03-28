@@ -6,4 +6,10 @@ internal class Genre
     public string? Name { get; private set; }
 
     public ICollection<MovieGenre> MovieGenres { get; } = [];
+
+    internal Genre(Guid genreId, string name)
+    {
+        GenreId = genreId;
+        Name = name;
+    }
 }
