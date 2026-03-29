@@ -1,13 +1,41 @@
-using CP.Portal.Movies.Module.Endpoints;
+using CP.Portal.Movies.Module.Data.Damain;
+using CP.Portal.Movies.Module.Data.Repositories;
 
 namespace CP.Portal.Movies.Module.Services;
 
-internal class MovieService : IMovieService
+internal class MovieService(IMovieRepository movieRepository) : IMovieService
 {
-    public List<MovieResponse> GetMovies() =>
-        [
-            new MovieResponse(Guid.NewGuid(), "The Shawshank Redemption", "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."),
-            new MovieResponse(Guid.NewGuid(), "The Godfather", "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."),
-            new MovieResponse(Guid.NewGuid(), "The Dark Knight", "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.")
-        ];
+    private readonly IMovieRepository _movieRepository = movieRepository;
+
+    public async Task CreateMovieAsync(Movie newMovie, CancellationToken ct)
+    { 
+        await _movieRepository.AddAsync(newMovie);
+        await _movieRepository.SaveChangesAsync(ct);
+    }
+    public async Task DeleteMovieAsync(Guid id, CancellationToken ct)
+    {
+        var movieToDelete = await _movieRepository.GetByIdAsync(id, ct);
+        if (movieToDelete is not null)
+        {
+            await _movieRepository.DeleteAsync(movieToDelete);
+            await _movieRepository.SaveChangesAsync(ct);
+        }
+    }
+    public Task<Movie?> GetMovieByIdAsync(Guid id, CancellationToken ct)
+    {
+        return _movieRepository.GetByIdAsync(id, ct);
+    }
+    public Task<List<Movie>> ListMovieAsync(CancellationToken ct)
+    {
+        return _movieRepository.ListAsync(ct);
+    }
+    public async Task UpdateMoviePriceAsync(Guid id, decimal newPrice, CancellationToken ct)
+    {
+        var movieToUpdate = await _movieRepository.GetByIdAsync(id, ct);
+        if(movieToUpdate is not null)
+        {
+            movieToUpdate.UpdatePrice(newPrice);
+            await _movieRepository.SaveChangesAsync(ct);
+        }
+    }
 }

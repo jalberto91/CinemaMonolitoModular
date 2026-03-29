@@ -71,4 +71,20 @@ internal class Movie
         Language = language.Trim();
         RentalPrice = rentalPrice;
     }
+
+    public void UpdatePrice(decimal newPrice)
+    {
+        if (newPrice < 0m)
+        {
+            throw new ArgumentOutOfRangeException(nameof(newPrice), "Rental price cannot be negative.");
+        }
+
+        if (newPrice == RentalPrice)
+        { 
+          return;
+        }
+        
+
+        RentalPrice = newPrice;
+    }
 }
