@@ -1,3 +1,4 @@
+using CP.Portal.Movies.Module.Data.Damain;
 using CP.Portal.Movies.Module.Services;
 
 using FastEndpoints;
@@ -15,9 +16,16 @@ internal class ListMoviesEndpoint(IMovieService movieService)
         AllowAnonymous();
     }
 
-    public override Task HandleAsync(CancellationToken ct = default)
+    public override async Task HandleAsync(CancellationToken ct = default)
     {
-        var movies = _movieService.GetMovies();
-        return Send.OkAsync(new ListMoviesResponse { Movies = movies }, ct);
+        var movies = await _movieService.ListMovieAsync(ct);
+        var moviesResponse = movies.Select(Movie => Movie.ToMovieResponse()).ToList();
+
+        var response = new ListMoviesResponse
+        {
+            Movies = moviesResponse
+        };
+
+        await Send.OkAsync(response, ct);
     }
 }
