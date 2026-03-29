@@ -1,4 +1,5 @@
 using CP.Portal.Movies.Module.Data;
+using CP.Portal.Movies.Module.Data.Repositories;
 using CP.Portal.Movies.Module.Data.Seedings;
 using CP.Portal.Movies.Module.Services;
 
@@ -16,6 +17,7 @@ public static class MovieServiceExtensions
         )
     {
         services.AddScoped<IMovieService, MovieService>();
+        services.AddScoped<IMovieRepository, EfMovieRepository>();
 
         string? connectionString = config.GetConnectionString("MoviesConnectionStrings");
         services.AddDbContext<MovieDbContext>(options =>
