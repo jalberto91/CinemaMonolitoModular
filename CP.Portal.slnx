@@ -3,9 +3,18 @@
   <Folder Name="/Api/src/">
     <Project Path="Api/src/CP.Portal.Api/CP.Portal.Api.csproj" />
   </Folder>
+  <Folder Name="/CP.Contracts/" />
+  <Folder Name="/CP.Contracts/src/" />
+  <Folder Name="/CP.Contracts/src/Core.Contracts/">
+    <Project Path="CP.Contracts/src/Core.Contracts/CP.Core.Contracts.csproj" />
+  </Folder>
   <Folder Name="/Movies.Module/" />
   <Folder Name="/Movies.Module/src/">
     <Project Path="Movies.Module/src/CP.Portal.Movies.Module/CP.Portal.Movies.Module.csproj" />
+  </Folder>
+   <Folder Name="/Users.Module/" />
+  <Folder Name="/Users.Module/src/">
+    <Project Path="Users.Module/src/CP.Portal.Users.Module/CP.Portal.Users.Module.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
