@@ -32,3 +32,19 @@ Accept: Application/json
 }
 
 ###
+
+#Delete Movie
+DELETE {{CP.Portal.Api_HostAddress}}/api/movies/019d3ccd-888c-7dc3-afdf-1fa740416482
+Content-Type: application/json
+Accept: Application/json
+
+###
+
+#Get Movie Details
+GET {{CP.Portal.Api_HostAddress}}/api/movies/019d3683-129d-7672-b956-9ff5692601a1
+Content-Type: application/json
+Accept: Application/json
+
+###
+
+
