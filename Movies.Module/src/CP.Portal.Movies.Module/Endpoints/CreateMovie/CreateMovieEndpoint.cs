@@ -1,4 +1,4 @@
-using CP.Portal.Movies.Module.Core;
+using CP.Core.Contracts.Core;
 using CP.Portal.Movies.Module.Endpoints;
 using CP.Portal.Movies.Module.Services;
 

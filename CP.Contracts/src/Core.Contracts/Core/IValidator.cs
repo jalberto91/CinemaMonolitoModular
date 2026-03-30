@@ -1,4 +1,4 @@
-namespace CP.Portal.Movies.Module.Core;
+namespace CP.Core.Contracts.Core;
 
 public interface IValidator<TRequest>
 {

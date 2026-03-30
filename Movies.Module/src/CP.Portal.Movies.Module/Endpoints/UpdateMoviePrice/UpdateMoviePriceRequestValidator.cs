@@ -1,4 +1,5 @@
-using CP.Portal.Movies.Module.Core;
+
+using CP.Core.Contracts.Core;
 
 namespace CP.Portal.Movies.Module.Endpoints.UpdateMoviePrice;
 

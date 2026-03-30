@@ -11,7 +11,7 @@ Content-Type: application/json
 Accept: Application/json
 
 {
-"title": "",
+"title": "33pp",
 "releaseYear": "2025-01-01",
 "durationMinutes": 120,
 "language": "en",
@@ -34,7 +34,7 @@ Accept: Application/json
 ###
 
 #Delete Movie
-DELETE {{CP.Portal.Api_HostAddress}}/api/movies/019d3ccd-888c-7dc3-afdf-1fa740416482
+DELETE {{CP.Portal.Api_HostAddress}}/api/movies/019d3eff-9776-713d-8289-c389f7d11587
 Content-Type: application/json
 Accept: Application/json
 

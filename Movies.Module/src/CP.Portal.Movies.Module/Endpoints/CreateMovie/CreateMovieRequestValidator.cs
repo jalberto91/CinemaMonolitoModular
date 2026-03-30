@@ -1,4 +1,5 @@
-using CP.Portal.Movies.Module.Core;
+
+using CP.Core.Contracts.Core;
 
 internal sealed class CreateMovieRequestValidator : IValidator<CreateMovieRequest>
 {

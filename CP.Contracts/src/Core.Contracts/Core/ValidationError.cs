@@ -1,3 +1,3 @@
-namespace CP.Portal.Movies.Module.Core;
+namespace CP.Core.Contracts.Core;
 
 public sealed record ValidationError(string PropertyName, string ErrorMessage);

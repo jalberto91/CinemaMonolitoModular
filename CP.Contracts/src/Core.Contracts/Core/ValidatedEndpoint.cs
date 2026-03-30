@@ -3,7 +3,7 @@ using FastEndpoints;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CP.Portal.Movies.Module.Core;
+namespace CP.Core.Contracts.Core;
 
 public abstract class ValidatedEndpoint<TRequest> : Endpoint<TRequest>
      where TRequest : notnull
