@@ -21,3 +21,14 @@ Accept: Application/json
 }
 
 ###
+
+#Update movie rent price
+PUT {{CP.Portal.Api_HostAddress}}/api/movies/019d3683-129c-780c-bd1a-7ef5a2689dcb/price
+Content-Type: application/json
+Accept: Application/json
+
+{
+    "newPrice": "1000"
+}
+
+###
