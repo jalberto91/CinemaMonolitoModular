@@ -1,3 +1,4 @@
+using CP.Portal.Movies.Module.Core;
 using CP.Portal.Movies.Module.Data;
 using CP.Portal.Movies.Module.Data.Repositories;
 using CP.Portal.Movies.Module.Data.Seedings;
@@ -36,6 +37,25 @@ public static class MovieServiceExtensions
 
             });
         });
+
+        var assembly = typeof(MovieServiceExtensions).Assembly;
+
+        var validatorTypes = assembly.GetTypes().Where(
+            t => t.IsClass && !t.IsAbstract
+            && t.GetInterfaces()
+            .Any(
+                i => i.IsGenericType
+                && i.GetGenericTypeDefinition() == typeof(IValidator<>))
+        ).ToList();
+
+        foreach(var validatorType in validatorTypes)
+        {
+            var validatorInterface = validatorType.GetInterfaces()
+                            .First(i => i.IsGenericType
+                            && i.GetGenericTypeDefinition() == typeof(IValidator<>));
+
+            services.AddScoped(validatorInterface, validatorType);
+        }
 
         return services;
     }

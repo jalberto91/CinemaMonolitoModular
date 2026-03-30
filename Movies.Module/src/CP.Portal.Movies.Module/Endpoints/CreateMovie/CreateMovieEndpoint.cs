@@ -15,6 +15,6 @@ internal class CreateMovieEndpoint(IMovieService movieService) : ValidatedEndpoi
     {
         var movie = req.ToMovie();
         await _movieService.CreateMovieAsync(movie, ct);
-        await Send.OkAsync(ct);
+        await Send.OkAsync();
     }
 }

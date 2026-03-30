@@ -11,7 +11,8 @@ internal static class MovieExtensions
             return new MovieResponse(
                 movie.MovieId, 
                 movie.Title, 
-                movie.Synopsis ?? string.Empty
+                movie.Synopsis ?? string.Empty,
+                movie.RentalPrice
             );
         }
     }
@@ -26,7 +27,8 @@ internal static class MovieExtensions
                 req.DurationMinutes,
                 req.Language ?? "en",
                 req.Price,
-                req.OriginalTitle
+                req.OriginalTitle,
+                req.Description
             );
            
         }

@@ -4,3 +4,20 @@ GET {{CP.Portal.Api_HostAddress}}/api/movies
 Accept: application/json
 
 ###
+
+#Create Movie
+POST {{CP.Portal.Api_HostAddress}}/api/movies
+Content-Type: application/json
+Accept: Application/json
+
+{
+"title": "",
+"releaseYear": "2025-01-01",
+"durationMinutes": 120,
+"language": "en",
+"price": 9.99,
+"originalTitle": "Avatar X Air",
+"description": "test"
+}
+
+###
