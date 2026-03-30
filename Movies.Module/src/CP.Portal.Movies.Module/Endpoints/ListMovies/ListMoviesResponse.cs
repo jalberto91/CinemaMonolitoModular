@@ -1,4 +1,4 @@
-namespace CP.Portal.Movies.Module.Endpoints;
+namespace CP.Portal.Movies.Module.Endpoints.ListMovies;
 
 public class ListMoviesResponse
 {

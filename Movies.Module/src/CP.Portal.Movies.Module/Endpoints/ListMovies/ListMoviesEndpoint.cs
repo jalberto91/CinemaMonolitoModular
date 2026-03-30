@@ -3,7 +3,7 @@ using CP.Portal.Movies.Module.Services;
 
 using FastEndpoints;
 
-namespace CP.Portal.Movies.Module.Endpoints;
+namespace CP.Portal.Movies.Module.Endpoints.ListMovies;
 
 internal class ListMoviesEndpoint(IMovieService movieService)
     : EndpointWithoutRequest<ListMoviesResponse>

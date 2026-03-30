@@ -15,4 +15,20 @@ internal static class MovieExtensions
             );
         }
     }
+
+    extension(CreateMovieRequest req)
+    {
+        public Movie ToMovie()
+        {
+            return new Movie(
+                req.Title,
+                req.ReleaseYear,
+                req.DurationMinutes,
+                req.Language ?? "en",
+                req.Price,
+                req.OriginalTitle
+            );
+           
+        }
+    }
 }
