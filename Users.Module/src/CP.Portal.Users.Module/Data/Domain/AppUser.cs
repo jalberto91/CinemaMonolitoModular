@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CP.Portal.Users.Module.Data.Domain;
 
-public class AppUser : IdentityUser
+public sealed class AppUser : IdentityUser
 {
     public string FullName { get; set; } = string.Empty;
     private readonly List<CartMovie> _cartMovies = [];
@@ -47,59 +47,18 @@ public class AppUser : IdentityUser
 
         return item;
     }
-}
 
-
-public sealed class CartMovie
-{
-    public CartMovie(
-        Guid movieId,
-        string description,
-        int quantity,
-        decimal unitPrice
-    )
+    internal void RemoveMovieFromCart(Guid movieId)
     {
-
-        if (quantity <= 0)
+        var itemFromCart = _cartMovies.FirstOrDefault(m => m.MovieId == movieId);
+        if (itemFromCart is null)
         {
-            throw new ArgumentOutOfRangeException(nameof(quantity), "Quantity must be greater than zero");
+            return;
         }
-
-        MovieId = movieId;
-        Description = description;
-        Quantity = quantity;
-        UnitPrice = unitPrice;
-    }
-
-    public string UserId { get; private set; } = default!;
-    public AppUser? User { get; private set; } = default!;
-    public Guid MovieId { get; private set; }
-    public string Description { get; private set; } = string.Empty;
-    public int  Quantity { get; private set; }
-    public decimal UnitPrice { get; private set; }
     
-    internal void UpdateQuantity(int quantity)
-    {
-        if (quantity <= 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(quantity), "Quantity must be greater than zero");
-        }
-
-        Quantity = quantity;
+        _cartMovies.Remove(itemFromCart);
     }
 
-    internal void UpdateDescription(string description)
-    {
-        Description = description;
-    }
+    public void ClearCart() => _cartMovies.Clear();
 
-    internal void UpdateUnitPrice(decimal unitPrice)
-    {
-        if (unitPrice < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(unitPrice), "Unit price cannot be negative");
-        }
-
-        UnitPrice = unitPrice;
-    }
 }
