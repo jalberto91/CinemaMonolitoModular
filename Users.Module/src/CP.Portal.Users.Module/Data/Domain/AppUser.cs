@@ -6,7 +6,7 @@ public sealed class AppUser : IdentityUser
 {
     public string FullName { get; set; } = string.Empty;
     private readonly List<CartMovie> _cartMovies = [];
-    public IReadOnlyList<CartMovie> CartMovies => _cartMovies;
+    public IReadOnlyList<CartMovie> CartItems => _cartMovies.AsReadOnly();
 
     public AppUser(string userName, string fullName) : base(userName)
     {
