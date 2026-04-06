@@ -8,6 +8,8 @@ public sealed class AppUser : IdentityUser
     private readonly List<CartMovie> _cartMovies = [];
     public IReadOnlyList<CartMovie> CartItems => _cartMovies.AsReadOnly();
 
+    public AppUser(){}
+
     public AppUser(string userName, string fullName) : base(userName)
     {
         UpdateFullName(fullName);
