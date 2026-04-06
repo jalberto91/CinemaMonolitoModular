@@ -5,6 +5,7 @@ namespace CP.Portal.Users.Module.Data.Domain;
 public sealed class AppUser : IdentityUser
 {
     public string FullName { get; set; } = string.Empty;
+
     private readonly List<CartMovie> _cartMovies = [];
     public IReadOnlyList<CartMovie> CartItems => _cartMovies.AsReadOnly();
 
@@ -12,7 +13,6 @@ public sealed class AppUser : IdentityUser
 
     public AppUser(string userName, string fullName) : base(userName)
     {
-        UpdateFullName(fullName);
     }
 
     internal void UpdateFullName(string fullName)

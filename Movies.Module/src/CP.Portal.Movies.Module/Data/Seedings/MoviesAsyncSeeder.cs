@@ -31,6 +31,7 @@ internal static class MoviesAsyncSeeder
                 136,
                 "en",
                 12.34m,
+                null,
                 "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
             );
 
@@ -40,6 +41,7 @@ internal static class MoviesAsyncSeeder
                 175,
                 "en",
                 15.99m,
+                null,
                 "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
             );
 
@@ -49,6 +51,7 @@ internal static class MoviesAsyncSeeder
                 152,
                 "en",
                 14.99m,
+                null,
                 "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham."
             );
 

@@ -39,8 +39,9 @@ public static class UserModuleExtensions
                         ConcurrencyStamp = Guid.NewGuid().ToString()
                     };
 
+                   var pwd = "NetUniversity@90";
                    var hasher = new PasswordHasher<AppUser>();
-                   user1.PasswordHash = hasher.HashPassword(user1, "YourPasswordHere**1");
+                   user1.PasswordHash = hasher.HashPassword(user1, pwd);
 
                     var user2 = new AppUser
                     {
@@ -53,7 +54,7 @@ public static class UserModuleExtensions
                         ConcurrencyStamp = Guid.NewGuid().ToString()
                     };
                     
-                    user2.PasswordHash = hasher.HashPassword(user2, "YourPasswordHere**1");
+                    user2.PasswordHash = hasher.HashPassword(user2, pwd);
 
                     await ctx.AppUsers.AddRangeAsync([ user1, user2 ], ct);
                     await ctx.SaveChangesAsync(ct);
@@ -62,9 +63,7 @@ public static class UserModuleExtensions
         });
         
         
-        services.AddIdentityCore<AppUser>()
-            .AddEntityFrameworkStores<UserDbContext>();
-
+        services.AddIdentityCore<AppUser>().AddEntityFrameworkStores<UserDbContext>();
         return services;
     }
 }

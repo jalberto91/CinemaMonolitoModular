@@ -9,7 +9,9 @@ public sealed class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
 {
     public void Configure(EntityTypeBuilder<AppUser> builder)
     {
-       builder.Navigation(u => u.CartItems).UsePropertyAccessMode(PropertyAccessMode.Field);
+       builder.Navigation(u => u.CartItems)
+            .HasField("_cartMovies")
+            .UsePropertyAccessMode(PropertyAccessMode.Field);
 
         builder.HasMany(u => u.CartItems)
                .WithOne(ci => ci.User)
