@@ -1,6 +1,7 @@
 using CP.Portal.Users.Module.Data.Domain;
 
 using FastEndpoints;
+using FastEndpoints.Security;
 
 using Microsoft.AspNetCore.Identity;
 
@@ -14,7 +15,7 @@ internal class LoginEndpoint(UserManager<AppUser> userManager) : Endpoint<LoginR
 
     public override void Configure()
     {
-        Post("/login");
+        Post("api/users/login");
         AllowAnonymous();
     }
 
@@ -28,12 +29,25 @@ internal class LoginEndpoint(UserManager<AppUser> userManager) : Endpoint<LoginR
         }
 
         var loginSuccesful = await _userManager.CheckPasswordAsync(user, req.Password);
+
         if (!loginSuccesful)
         {
             await Send.UnauthorizedAsync();
             return;
         }
 
-        await Send.OkAsync();
+        var jwtSecret = Config["Auth:JwtSecret"]!;
+
+        var token = JwtBearer.CreateToken(option => 
+        { 
+            option.SigningKey = jwtSecret; 
+            option.ExpireAt = DateTime.UtcNow.AddHours(500);
+            option.User["sub"] = user.Id;
+            option.User["email"] = user.Email!;
+            option.User["name"] = user.FullName!;
+            option.User["EmailAddress"] = user.Email!;
+        });
+
+        await Send.OkAsync(token);
     }
 }
