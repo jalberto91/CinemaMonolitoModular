@@ -47,7 +47,7 @@ Accept: Application/json
 
 ###
 
-#Login User
+# @name Login
 POST {{CP.Portal.Api_HostAddress}}/api/users/login
 Content-Type: application/json
 Accept: Application/json
@@ -56,6 +56,15 @@ Accept: Application/json
 "email": "jodiaz@mail.com",
 "password": "NetUniversity@90"
 }
+
+###
+
+#Get User Details
+@bearerToken = {{Login.response.body.$.token}}
+GET {{CP.Portal.Api_HostAddress}}/api/users/me
+Content-Type: application/json
+Accept: Application/json
+Authorization: Bearer {{bearerToken}}
 
 ###
 
