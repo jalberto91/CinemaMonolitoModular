@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Text;
 
 using CP.Portal.Movies.Module;
@@ -11,12 +12,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
+List<Assembly> mediatorAssemblies = [typeof(Program).Assembly];
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMovieServices(builder.Configuration);
-builder.Services.AddUserModuleServices(builder.Configuration);
-builder.Services.AddFastEndpoints();
+builder.Services.AddUserModuleServices(builder.Configuration, mediatorAssemblies);
 builder.Services.AddOpenApi();
+builder.Services.AddFastEndpoints();
 
 var jwtSecret = builder.Configuration["Auth:JwtSecret"]!;
 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));

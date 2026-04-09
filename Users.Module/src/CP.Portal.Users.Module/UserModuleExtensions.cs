@@ -1,8 +1,13 @@
 
 
+using System.Reflection;
+
+using Core.MediatOR;
+
 using CP.Core.Contracts;
 using CP.Portal.Users.Module.Data;
 using CP.Portal.Users.Module.Data.Domain;
+using CP.Portal.Users.Module.Data.Repositories;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +18,12 @@ namespace CP.Portal.Users.Module;
 
 public static class UserModuleExtensions
 {
-    public static IServiceCollection AddUserModuleServices(this IServiceCollection services, ConfigurationManager config)
+    public static IServiceCollection AddUserModuleServices(
+        this IServiceCollection services,
+        ConfigurationManager config,
+        List<Assembly> mediatorAssemblies
+        )
     {
-
         services.AddModuleValidators(typeof(UserModuleExtensions).Assembly);
 
         string? connectionString = config.GetConnectionString("UsersConnectionStrings");
@@ -64,6 +72,12 @@ public static class UserModuleExtensions
         
         
         services.AddIdentityCore<AppUser>().AddEntityFrameworkStores<UserDbContext>();
+        services.AddScoped<IAppUserRepository, EFAppUserRepository>();
+
+        mediatorAssemblies.Add(typeof(UserModuleExtensions).Assembly);
+        services.AddMediatOR(typeof(UserModuleExtensions).Assembly);
+
+
         return services;
     }
 }

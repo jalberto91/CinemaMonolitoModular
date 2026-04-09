@@ -41,7 +41,7 @@ Accept: Application/json
 ###
 
 #Get Movie Details
-GET {{CP.Portal.Api_HostAddress}}/api/movies/019d3683-129d-7672-b956-9ff5692601a1
+GET {{CP.Portal.Api_HostAddress}}/api/movies/019d6605-0966-7624-9d5b-88e946770a25
 Content-Type: application/json
 Accept: Application/json
 
@@ -59,8 +59,22 @@ Accept: Application/json
 
 ###
 
-#Get User Details
 @bearerToken = {{Login.response.body.$.token}}
+
+# @name cartItem
+POST {{CP.Portal.Api_HostAddress}}/api/cart
+Content-Type: application/json
+Accept: Application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+"movieId": "019d6605-0966-7624-9d5b-88e946770a25",
+"quantity": 2
+}
+
+###
+
+#Get User Details
 GET {{CP.Portal.Api_HostAddress}}/api/users/me
 Content-Type: application/json
 Accept: Application/json
@@ -79,5 +93,3 @@ Accept: Application/json
 }
 
 ###
-
-

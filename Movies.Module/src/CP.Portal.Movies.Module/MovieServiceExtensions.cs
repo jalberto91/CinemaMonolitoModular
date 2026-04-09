@@ -1,3 +1,5 @@
+using Core.MediatOR;
+
 using CP.Core.Contracts;
 using CP.Portal.Movies.Module.Data;
 using CP.Portal.Movies.Module.Data.Repositories;
@@ -39,6 +41,7 @@ public static class MovieServiceExtensions
         });        
 
         services.AddModuleValidators(typeof(MovieServiceExtensions).Assembly);
+        services.AddMediatOR(typeof(MovieServiceExtensions).Assembly);
 
         return services;
     }
