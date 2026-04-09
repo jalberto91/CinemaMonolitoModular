@@ -9,7 +9,8 @@
     <Project Path="CP.Contracts/src/Core.Contracts/CP.Core.Contracts.csproj" />
   </Folder>
   <Folder Name="/Libs/">
-    <Project Path="../../libs/CoreResults/Core.Results.csproj" />
+    <Project Path="../../libs/Core.MediatOR/Core.MediatOR.csproj" />
+    <Project Path="../../libs/Core.Results/Core.Results.csproj" />
   </Folder>
   <Folder Name="/Movies.Module/" />
   <Folder Name="/Movies.Module/src/">
