@@ -8,6 +8,9 @@
   <Folder Name="/CP.Contracts/src/Core.Contracts/">
     <Project Path="CP.Contracts/src/Core.Contracts/CP.Core.Contracts.csproj" />
   </Folder>
+  <Folder Name="/Libs/">
+    <Project Path="../../libs/CoreResults/Core.Results.csproj" />
+  </Folder>
   <Folder Name="/Movies.Module/" />
   <Folder Name="/Movies.Module/src/">
     <Project Path="Movies.Module/src/CP.Portal.Movies.Module/CP.Portal.Movies.Module.csproj" />
