@@ -68,4 +68,16 @@ Authorization: Bearer {{bearerToken}}
 
 ###
 
+# @name RegisterUser
+POST {{CP.Portal.Api_HostAddress}}/api/users
+Content-Type: application/json
+Accept: Application/json
+
+{
+"email": "carlo@mail.com",
+"password": "NetUniversity@90"
+}
+
+###
+
 
